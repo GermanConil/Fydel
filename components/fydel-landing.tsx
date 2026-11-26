@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type CSSProperties } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -15,6 +15,13 @@ const modules = [
   { icon: ShoppingBag, name: "Pedidos y pagos", title: "Del antojo al pedido. Sin vueltas.", text: "Tu carta, el carrito y el pago en una misma experiencia. Retiro o entrega, Coins y Mercado Pago: menos pasos entre tus productos y tus clientes.", label: "TU CARTA, SIEMPRE A MANO", detail: "Eligen → piden → disfrutan", kind: "orders" },
   { icon: Gift, name: "Giftcards y regalos", title: "Que te recomienden con un regalo.", text: "Un café, una cena o Coins para disfrutar. Tus clientes pueden regalar tu experiencia y acercar nuevas personas a tu negocio.", label: "LOS BUENOS MOMENTOS SE COMPARTEN", detail: "Regalan → descubren → vuelven", kind: "gifts" },
   { icon: Crown, name: "Membresías", title: "Tus habituales merecen algo especial.", text: "Creá categorías con beneficios exclusivos y reintegros en Coins. Activá membresías por compra o por metas de consumo: tus reglas, tu comunidad.", label: "MÁS QUE CLIENTES, PARTE DE TU MARCA", detail: "Eligen tu marca → reciben más", kind: "membership" },
+]
+
+const brandExamples = [
+  { id: "savia", name: "Savia", category: "Café & botánica", logo: "/brands/savia.svg", color: "#234d38", accent: "#e4d3a3", text: "#fff8e9", font: "'Cormorant Garamond', Georgia, serif", title: "Tu pausa.\nTu club favorito.", benefit: "Cada café, un nuevo motivo para volver.", footer: "Cultivamos buenos momentos.", reward: "Café de especialidad · Coins · Recompensas" },
+  { id: "forno", name: "Forno 86", category: "Pizzería de barrio", logo: "/brands/forno-86.svg", color: "#a33f29", accent: "#ffdfb3", text: "#fff5e7", font: "Georgia, 'Times New Roman', serif", title: "La próxima ronda\nes entre amigos.", benefit: "Tu pizza de siempre. Más beneficios.", footer: "El barrio tiene su mesa.", reward: "Pizza al horno · Pedidos · Giftcards" },
+  { id: "luna", name: "Luna Rota", category: "Bar & cocina", logo: "/brands/luna-rota.svg", color: "#45356b", accent: "#e9ffb0", text: "#f8f0ff", font: "'Space Grotesk', 'Trebuchet MS', sans-serif", title: "Buenas noches.\nMejores planes.", benefit: "Tu próxima salida empieza con un beneficio.", footer: "Nos vemos donde pasan cosas.", reward: "Cócteles de autor · Club · Experiencias" },
+  { id: "brasa", name: "Brasa Club", category: "Hamburguesería", logo: "/brands/brasa-club.svg", color: "#252722", accent: "#ddf287", text: "#fffceb", font: "'Bebas Neue', Impact, sans-serif", title: "Más fuego.\nMás ganas de volver.", benefit: "Sumá Coins. Desbloqueá tu próxima burger.", footer: "El hambre nos vuelve a juntar.", reward: "Burgers · Coins · Beneficios exclusivos" },
 ]
 
 const questions = [
@@ -50,7 +57,8 @@ export default function FydelLanding() {
   const root = useRef<HTMLDivElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeModule, setActiveModule] = useState(0)
-  const [brandColor, setBrandColor] = useState("#1e432b")
+  const [activeBrand, setActiveBrand] = useState(0)
+  const selectedBrand = brandExamples[activeBrand]
   const [visits, setVisits] = useState(300)
   const [ticket, setTicket] = useState(12000)
   const selectedModule = modules[activeModule]
@@ -139,8 +147,21 @@ export default function FydelLanding() {
       <section className={`${styles.brandSection} ${styles.container} ${styles.section}`}>
         <div className={styles.brandVisual} data-reveal>
           <Image src="/fydel-restaurant.jpg" alt="Interior cálido de un restaurante con mesas y vegetación" fill sizes="(max-width: 760px) 100vw, 50vw" />
-          <div className={styles.brandCard} style={{ background: brandColor }}><div><Coffee size={23} /><span>TU MARCA, TU APP</span></div><strong>El club de<br />tu lugar favorito.</strong><p>Coins · Pedidos · Beneficios</p><span className={styles.brandCardBottom}>Diseñada para que te elijan. <Heart size={18} /></span></div>
-          <div className={styles.palettePicker}><span>Probá tu estilo</span>{[{ color: "#1e432b", label: "Verde" }, { color: "#9d402d", label: "Terracota" }, { color: "#333166", label: "Índigo" }, { color: "#222322", label: "Carbón" }].map(({ color, label }) => <button key={color} style={{ background: color }} aria-label={`Vista previa en ${label}`} aria-pressed={brandColor === color} onClick={() => setBrandColor(color)}>{brandColor === color && <Check size={14} />}</button>)}</div>
+          <div className={styles.brandCard} data-brand={selectedBrand.id} style={{ background: selectedBrand.color, color: selectedBrand.text, "--brand-accent": selectedBrand.accent, "--brand-font": selectedBrand.font } as CSSProperties}>
+            <div className={styles.brandIdentity} key={selectedBrand.id} aria-live="polite" aria-atomic="true">
+              <Image src={selectedBrand.logo} alt={`Logo de ${selectedBrand.name}, marca ficticia`} width={210} height={63} />
+              <span className={styles.brandCategory}>{selectedBrand.category}</span>
+              <strong>{selectedBrand.title}</strong>
+              <p>{selectedBrand.benefit}</p>
+              <span className={styles.brandRewards}>{selectedBrand.reward}</span>
+              <span className={styles.brandCardBottom}>{selectedBrand.footer}<Heart size={17} /></span>
+            </div>
+          </div>
+          <div className={styles.palettePicker} role="group" aria-label="Elegí una marca de ejemplo">
+            <span>Probá otra marca<b>{selectedBrand.name}</b></span>
+            {brandExamples.map((brand, index) => <button key={brand.id} style={{ background: brand.color, color: brand.accent }} aria-label={`Ver marca ${brand.name}: ${brand.category}`} aria-pressed={activeBrand === index} title={brand.name} onClick={() => setActiveBrand(index)}>{activeBrand === index ? <Check size={17} /> : <span>{["S", "F", "L", "B"][index]}</span>}</button>)}
+          </div>
+          <span className={styles.brandDisclaimer}>Marcas ficticias · Ejemplos de personalización</span>
         </div>
         <div className={styles.brandCopy} data-reveal><span className={styles.eyebrow}>TU IDENTIDAD NO SE NEGOCIA</span><h2>Tu marca al frente.<br /><em>Fydel detrás.</em></h2><p>No sos un local más en una lista. Sos el lugar que tus clientes eligen. Por eso la experiencia lleva tu identidad, no la de un marketplace.</p><ul><li><Check /> Tu nombre, tus colores y tu personalidad.</li><li><Check /> Tu catálogo, sucursales y modalidades de entrega.</li><li><Check /> Tus reglas de Coins, membresías y beneficios.</li><li><Check /> Los módulos que tienen sentido para tu negocio.</li></ul><a href="#como-funciona" className={styles.textLink}>Así lo llevamos a tu local <ArrowRight size={17} /></a></div>
       </section>

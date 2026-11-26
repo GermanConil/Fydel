@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="90" viewBox="0 0 300 90" fill="none">
+  <g stroke="#ffdfb3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 69V44a27 27 0 0 1 54 0v25H10Z"/><path d="M21 69V47a16 16 0 0 1 32 0v22M6 75h63"/>
+    <path d="M36 61c-13-6-5-12-1-17-1 7 10 10 1 17ZM26 10l2-6m18 6 2-6"/>
+  </g>
+  <text x="82" y="51" fill="#fff5e7" font-family="Georgia,serif" font-size="36" font-weight="bold">Forno 86</text>
+  <text x="85" y="74" fill="#ffdfb3" font-family="Arial,sans-serif" font-size="9" letter-spacing="3.2">PIZZA. FUOCO. AMICI.</text>
+</svg>

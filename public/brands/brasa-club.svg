@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="90" viewBox="0 0 300 90" fill="none">
+  <path d="M34 7c9 17 25 22 25 40 0 16-10 27-25 27S9 63 9 48c0-11 7-23 15-29-1 10 0 15 5 18 8-8 9-18 5-30Z" fill="#ddf287"/>
+  <path d="M35 44c-6 8-11 12-11 18a11 11 0 0 0 22 0c0-7-8-11-11-18Z" fill="#252722"/>
+  <text x="78" y="49" fill="#ddf287" font-family="Impact,'Arial Black',sans-serif" font-size="41" font-weight="bold" letter-spacing="1">BRASA</text>
+  <text x="81" y="72" fill="#fffceb" font-family="Arial,sans-serif" font-size="11" font-weight="bold" letter-spacing="8">BURGER CLUB</text>
+</svg>

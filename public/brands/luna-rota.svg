@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="90" viewBox="0 0 300 90" fill="none">
+  <path d="M48 13a30 30 0 1 0 16 47A29 29 0 0 1 48 13Z" fill="#d7c9ff"/>
+  <path d="m59 12 3 9 9 3-9 3-3 9-3-9-9-3 9-3 3-9Z" fill="#e9ffb0"/>
+  <circle cx="21" cy="48" r="2" fill="#45356b"/>
+  <text x="86" y="40" fill="#f8f0ff" font-family="Arial,sans-serif" font-size="29" font-weight="bold" letter-spacing="1.5">LUNA</text>
+  <text x="86" y="68" fill="#f8f0ff" font-family="Arial,sans-serif" font-size="29" font-weight="bold" letter-spacing="1.5">ROTA<tspan fill="#e9ffb0">.</tspan></text>
+  <text x="205" y="40" fill="#d7c9ff" font-family="Arial,sans-serif" font-size="7" letter-spacing="1.8">BAR &amp;</text>
+  <text x="205" y="54" fill="#d7c9ff" font-family="Arial,sans-serif" font-size="7" letter-spacing="1.8">COCINA</text>
+</svg>

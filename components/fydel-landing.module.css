@@ -157,19 +157,29 @@
 .extrasGrid h3 { font-size:14px;font-weight:600;margin-bottom:5px; }
 .extrasGrid p { font-size:12px;line-height:1.7;color:#7d8575; }
 .brandSection { display:grid;grid-template-columns:1fr 1fr;gap:85px;align-items:center; }
-.brandVisual { min-height:475px;position:relative;border-radius:24px;overflow:hidden;display:flex;align-items:center;justify-content:center;isolation:isolate; }
+.brandVisual { min-height:530px;position:relative;border-radius:24px;overflow:hidden;display:flex;align-items:center;justify-content:center;isolation:isolate;padding-bottom:55px; }
 .brandVisual>img { object-fit:cover;z-index:-2; }
 .brandVisual:before { content:"";position:absolute;inset:0;background:#1d221c36;z-index:-1; }
-.brandCard { width:270px;border-radius:18px;color:white;padding:27px 25px;box-shadow:0 15px 35px #0003;transform:rotate(-7deg);transition:background .4s; }
-.brandCard>div { display:flex;align-items:center;gap:10px;margin-bottom:31px; }
-.brandCard>div>span { font-size:8px;letter-spacing:1.1px; }
-.brandCard>strong { font-size:30px;line-height:1.18;letter-spacing:-1px;font-weight:500; }
-.brandCard>p { color:#ffffffa6;font-size:10px;margin-top:15px; }
-.brandCardBottom { display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ffffff26;margin-top:24px;padding-top:16px;font-size:8px;color:#ffffffbc; }
-.palettePicker { position:absolute;bottom:22px;background:#fff;padding:10px 14px;border-radius:40px;display:flex;align-items:center;gap:7px;box-shadow:0 6px 20px #0002; }
-.palettePicker>span { font-size:10px;font-weight:500;margin-right:8px; }
-.palettePicker>button { width:24px;height:24px;border:0;border-radius:50%;color:#fff;display:grid;place-items:center;transition:transform .2s; }
+.brandCard { width:290px;border-radius:18px;padding:25px;box-shadow:0 15px 35px #0003;transform:rotate(-7deg);transition:background .4s,color .4s; }
+.brandIdentity { display:flex;flex-direction:column;align-items:flex-start;min-height:305px;animation:enter .4s ease-out; }
+.brandIdentity>img { width:190px;height:57px;object-fit:contain;object-position:left center;margin-bottom:8px; }
+.brandCategory { color:var(--brand-accent);font-size:8px;letter-spacing:1.6px;text-transform:uppercase; }
+.brandIdentity>strong { display:block;font-family:var(--brand-font);font-size:30px;line-height:1.1;letter-spacing:-.8px;font-weight:600;white-space:pre-line;margin-top:23px; }
+.brandCard[data-brand="savia"] .brandIdentity>strong { font-size:35px;font-weight:500; }
+.brandCard[data-brand="brasa"] .brandIdentity>strong { font-size:38px;letter-spacing:.4px;font-weight:400;text-transform:uppercase; }
+.brandCard[data-brand="luna"] .brandIdentity>strong { font-size:28px;font-weight:500;letter-spacing:-1.2px; }
+.brandIdentity>p { font-size:11px;line-height:1.6;opacity:.8;margin-top:13px; }
+.brandRewards { color:var(--brand-accent);font-size:8px;line-height:1.6;margin-top:13px;margin-bottom:18px; }
+.brandCardBottom { width:100%;display:flex;gap:10px;align-items:center;justify-content:space-between;border-top:1px solid #ffffff26;margin-top:auto;padding-top:17px;font-size:8px;color:var(--brand-accent); }
+.brandCardBottom svg { flex-shrink:0; }
+.palettePicker { position:absolute;bottom:40px;max-width:calc(100% - 24px);background:#fff;padding:11px 15px;border-radius:40px;display:flex;align-items:center;gap:7px;box-shadow:0 6px 20px #0002; }
+.palettePicker>span { font-size:9px;font-weight:400;line-height:1.5;margin-right:8px;color:#83877c; }
+.palettePicker>span>b { display:block;font-size:12px;font-weight:600;color:var(--ink); }
+.palettePicker>button { flex-shrink:0;width:32px;height:32px;border:2px solid transparent;border-radius:50%;display:grid;place-items:center;transition:transform .2s,box-shadow .2s; }
+.palettePicker>button>span { font-size:12px;font-weight:700; }
+.palettePicker>button[aria-pressed="true"] { box-shadow:0 0 0 2px white,0 0 0 3px #b1b4a8; }
 .palettePicker>button:hover { transform:scale(1.13); }
+.brandDisclaimer { position:absolute;bottom:14px;font-size:8px;color:white;text-shadow:0 1px 8px #000;letter-spacing:.2px; }
 .brandCopy h2 { margin:17px 0 23px; }
 .brandCopy>p { color:var(--subtle);font-size:15px;line-height:1.8; }
 .brandCopy ul { display:flex;flex-direction:column;gap:15px;list-style:none;padding:0;margin:25px 0 29px; }
@@ -251,7 +261,7 @@
   .businessStrip span { font-size:12px;gap:6px; }
   .businessStrip svg { width:19px; }
   .brandSection,.calculatorSection,.faqSection { gap:45px; }
-  .brandVisual { min-height:430px; }
+  .brandVisual { min-height:530px; }
   .experienceGrid { gap:23px; }
   .modulePanel { padding-inline:25px; }
   .stepsGrid { gap:28px; }
@@ -267,7 +277,7 @@
   .valueCard { padding:22px; }.valueCard h3 { font-size:17px; }.valueCard p { font-size:13px; }
   .businessStrip .container>div { flex-wrap:wrap;justify-content:flex-start;gap:14px 25px; }
   .brandSection { gap:35px; }.brandCopy li { font-size:12px; }
-  .landing h2 { font-size:37px; }.brandCard { width:240px; }
+  .landing h2 { font-size:37px; }.brandCard { width:270px;padding:23px; }
   .extrasGrid { gap:18px; }.extrasGrid h3 { font-size:13px; }.extrasGrid p { font-size:11px; }
   .demoInner { grid-template-columns:1fr 220px; }.demoArt { scale:.85; }
   .demoActions { gap:15px; }.demoActions>span { font-size:9px; }
@@ -321,7 +331,7 @@
   .moduleEyebrow { font-size:8px;letter-spacing:1.1px; }
   .moduleGraphic { height:248px; }.modulePanel h3 { font-size:23px; }.modulePanel p { font-size:14px; }
   .extrasGrid { grid-template-columns:1fr;gap:24px;margin-top:31px; }.extrasGrid h3 { font-size:15px; }.extrasGrid p { font-size:13px; }
-  .brandSection { grid-template-columns:1fr;gap:35px; }.brandVisual { min-height:430px; }.brandCard { width:270px; }.brandCopy h2 { margin-top:14px; }.brandCopy>p { font-size:14px; }.brandCopy li { font-size:13px; }
+  .brandSection { grid-template-columns:1fr;gap:35px; }.brandVisual { min-height:530px; }.brandCard { width:270px; }.brandCopy h2 { margin-top:14px; }.brandCopy>p { font-size:14px; }.brandCopy li { font-size:13px; }
   .stepsSection .sectionIntro { text-align:left; }.stepsGrid { grid-template-columns:1fr;gap:30px;margin-top:36px; }.stepTop { margin-bottom:16px;padding-bottom:14px; }.stepsGrid h3 { margin-bottom:9px;font-size:21px; }.stepsGrid p { font-size:14px; }
   .calculatorSection { grid-template-columns:1fr;gap:28px; }.calculatorSection>div>p { font-size:14px; }.calculatorDisclaimer { font-size:10px;margin-top:15px; }.calculator { padding:25px; }.calculatorResult>strong { font-size:41px; }
   .demoInner { grid-template-columns:1fr;padding-block:58px;gap:30px; }.demoSection h2 { font-size:35px;letter-spacing:-1.5px; }.demoSection p { font-size:14px; }.demoSection p br { display:none; }.demoActions { gap:20px;flex-wrap:wrap; }.demoActions>span { font-size:10px; }.demoDisclaimer { font-size:9px; }.demoArt { display:none; }
